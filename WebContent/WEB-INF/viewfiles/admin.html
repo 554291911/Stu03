@@ -1,0 +1,84 @@
+<@m.header/> 
+<@m.body/>
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PROFILE CONTENT -->
+		<div class="profile-content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet light">
+						<div class="portlet-title tabbable-line">
+							<div class="caption caption-md">
+								<i class="icon-globe theme-font hide"></i> <span
+									class="caption-subject font-blue-madison bold uppercase">密码修改</span>
+							</div>
+						</div>
+						<div class="portlet-body">
+							<form class="form-horizontal margin-bottom-40" role="form">
+										<div class="form-group form-md-line-input">
+											<label for="inputEmail1" class="col-md-2 control-label">当前密码</label>
+											<div class="col-md-6">
+												<input type="password" class="form-control" id="ymm"
+													placeholder="">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请输入当前密码.</span>
+											</div>
+										</div>
+										<div class="form-group form-md-line-input">
+											<label for="inputPassword12" class="col-md-2 control-label">新密码</label>
+											<div class="col-md-6">
+												<input type="password" class="form-control"
+													id="xmm1" placeholder="">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请输入新密码.</span>
+											</div>
+										</div>
+										<div class="form-group form-md-line-input">
+											<label for="inputPassword12" class="col-md-2 control-label">重复新密码</label>
+											<div class="col-md-6">
+												<input type="password" class="form-control"
+													id="xmm2" placeholder="">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请再次输入新密码.</span>
+											</div>
+										</div>
+											<div class="margin-top-10">
+												<a href="javascript:;" class="btn green-haze" onclick="xgmm();">保存修改</a>
+											</div>
+									</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PROFILE CONTENT -->
+	</div>
+</div>
+<@m.footer/>
+<script type="text/javascript">
+	function xgmm(){
+		var ymm=$("#ymm").val();
+		var xmm1=$("#xmm1").val();
+		var xmm2=$("#xmm2").val();
+		if(ymm=="" || ymm==null){
+			bootbox.alert("请输入原密码！");
+			return;
+		}
+		if(xmm1=="" || xmm1==null || xmm2=="" || xmm2==null){
+			bootbox.alert("请输入新密码！");
+			return;
+		}
+		$.post("setUserMM.do", {
+			"ymm" : ymm,
+			"xmm":xmm1
+		}, function(da) {
+			if (da == "ok") {
+				toastr.success("密码修改成功!", "成功");
+			} else {
+				bootbox.alert("原密码错误！");
+			}
+		}, "text");
+	}
+</script>
+<@m.end/>

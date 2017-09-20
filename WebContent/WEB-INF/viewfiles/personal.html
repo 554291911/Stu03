@@ -1,0 +1,165 @@
+<@m.header/> 
+<@m.body/>
+
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PROFILE CONTENT -->
+		<div class="profile-content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet light">
+						<div class="portlet-title tabbable-line">
+							<div class="caption caption-md">
+								<i class="icon-globe theme-font hide"></i> <span
+									class="caption-subject font-blue-madison bold uppercase">信息修改</span>
+							</div>
+							<ul class="nav nav-tabs">
+								<li class="active"><a href="#tab_1_1" data-toggle="tab">个人信息</a></li>
+								<li><a href="#tab_1_3" data-toggle="tab">密码修改</a></li>
+								<!-- <li><a href="#tab_1_4" data-toggle="tab">其他设置</a></li> -->
+							</ul>
+						</div>
+						<div class="portlet-body">
+							<div class="tab-content">
+								<!-- PERSONAL INFO TAB -->
+								<div class="tab-pane active" id="tab_1_1">
+									<form class="form-horizontal margin-bottom-40" role="form">
+										<div class="form-group form-md-line-input">
+											<label for="inputEmail1" class="col-md-2 control-label">手机号码</label>
+											<div class="col-md-6">
+												<input type="tel" class="form-control" id="phone"
+													placeholder="${stu.phone}">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请输入新手机号码.</span>
+											</div>
+										</div>
+										<div class="form-group form-md-line-input">
+											<label for="inputPassword12" class="col-md-2 control-label">Email</label>
+											<div class="col-md-6">
+												<input type="email" class="form-control"
+													id="email" placeholder="${stu.email}">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请输入新Email地址.</span>
+											</div>
+										</div>
+											<div class="margin-top-10">
+												<a href="javascript:;" class="btn green-haze" onclick="grxx();">保存修改</a>
+											</div>
+									</form>
+								</div>
+								<!-- END PERSONAL INFO TAB -->
+								<!-- CHANGE PASSWORD TAB -->
+								<div class="tab-pane" id="tab_1_3">
+									<form class="form-horizontal margin-bottom-40" role="form">
+										<div class="form-group form-md-line-input">
+											<label for="inputEmail1" class="col-md-2 control-label">当前密码</label>
+											<div class="col-md-6">
+												<input type="password" class="form-control" id="ymm"
+													placeholder="">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请输入当前密码.</span>
+											</div>
+										</div>
+										<div class="form-group form-md-line-input">
+											<label for="inputPassword12" class="col-md-2 control-label">新密码</label>
+											<div class="col-md-6">
+												<input type="password" class="form-control"
+													id="xmm1" placeholder="">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请输入新密码.</span>
+											</div>
+										</div>
+										<div class="form-group form-md-line-input">
+											<label for="inputPassword12" class="col-md-2 control-label">重复新密码</label>
+											<div class="col-md-6">
+												<input type="password" class="form-control"
+													id="xmm2" placeholder="">
+												<div class="form-control-focus"></div>
+												<span class="help-block">请再次输入新密码.</span>
+											</div>
+										</div>
+											<div class="margin-top-10">
+												<a href="javascript:;" class="btn green-haze" onclick="xgmm();">保存修改</a>
+											</div>
+									</form>
+								</div>
+								<!-- END CHANGE PASSWORD TAB -->
+								<!-- PRIVACY SETTINGS TAB -->
+								<div class="tab-pane" id="tab_1_4">
+									<form action="#">
+										<table class="table table-light table-hover">
+											<tr>
+												<td>是否允许系统向您发送相关信息的提醒邮件?</td>
+												<td><label class="uniform-inline"> <input
+														type="radio" name="optionsRadios1" value="option1" /> 是
+												</label> <label class="uniform-inline"> <input type="radio"
+														name="optionsRadios1" value="option2" checked /> 否
+												</label></td>
+											</tr>
+										</table>
+										<!--end profile-settings-->
+										<div class="margin-top-10">
+											<a href="javascript:;" class="btn green-haze">保存修改</a>
+										</div>
+									</form>
+								</div>
+								<!-- END PRIVACY SETTINGS TAB -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PROFILE CONTENT -->
+	</div>
+</div>
+<@m.footer/>
+<script type="text/javascript">
+	function xgmm(){
+		var ymm=$("#ymm").val();
+		var xmm1=$("#xmm1").val();
+		var xmm2=$("#xmm2").val();
+		if(ymm=="" || ymm==null){
+			bootbox.alert("请输入原密码！");
+			return;
+		}
+		if(xmm1=="" || xmm1==null || xmm2=="" || xmm2==null){
+			bootbox.alert("请输入新密码！");
+			return;
+		}
+		$.post("setStuMM.do", {
+			"ymm" : ymm,
+			"xmm":xmm1
+		}, function(da) {
+			if (da == "ok") {
+				toastr.success("密码修改成功!", "成功");
+			} else {
+				bootbox.alert("原密码错误！");
+			}
+		}, "text");
+	}
+	function grxx(){
+		var phone = $("#phone").val();
+		var email = $("#email").val();
+		if(phone=="" || phone==null){
+			bootbox.alert("请输入电话号码！");
+			return;
+		}
+		if(email=="" || email==null){
+			bootbox.alert("请输入Email！");
+			return;
+		}
+		$.post("setGrxx.do", {
+			"email" : email,
+			"phone":phone
+		}, function(da) {
+			if (da == "ok") {
+				toastr.success("修改成功!", "成功");
+				
+			} else {
+				bootbox.alert("修改失败！");
+			}
+		}, "text");
+	}
+</script>
+<@m.end/>

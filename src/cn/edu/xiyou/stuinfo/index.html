@@ -1,0 +1,316 @@
+<@m.header/> <@m.body />
+<div class="row widget-row">
+	<div class="col-md-4">
+		<!-- BEGIN WIDGET THUMB -->
+		<div
+			class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 ">
+			<h4 class="widget-thumb-heading">综合得分</h4>
+			<div class="widget-thumb-wrap">
+				<i class="widget-thumb-icon bg-green icon-badge"></i>
+				<div class="widget-thumb-body">
+					<span class="widget-thumb-body-stat" data-counter="counterup">${fs}分</span>
+				</div>
+			</div>
+		</div>
+		<!-- END WIDGET THUMB -->
+	</div>
+	<div class="col-md-4">
+		<!-- BEGIN WIDGET THUMB -->
+		<div
+			class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 ">
+			<h4 class="widget-thumb-heading">奖励得分</h4>
+			<div class="widget-thumb-wrap">
+				<i class="widget-thumb-icon bg-red icon-like"></i>
+				<div class="widget-thumb-body">
+					<span class="widget-thumb-body-stat" data-counter="counterup">${jl}分</span>
+				</div>
+			</div>
+		</div>
+		<!-- END WIDGET THUMB -->
+	</div>
+	<div class="col-md-4">
+		<!-- BEGIN WIDGET THUMB -->
+		<div
+			class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 ">
+			<h4 class="widget-thumb-heading">处罚得分</h4>
+			<div class="widget-thumb-wrap">
+				<i class="widget-thumb-icon bg-purple icon-dislike"></i>
+				<div class="widget-thumb-body">
+					<span class="widget-thumb-body-stat" data-counter="counterup">${cf}分</span>
+				</div>
+			</div>
+		</div>
+		<!-- END WIDGET THUMB -->
+	</div>
+</div>
+<div class="row widget-row">
+<div class="col-md-5">
+	<!-- BEGIN SAMPLE FORM PORTLET-->
+	<div class="portlet light">
+		<div class="portlet-title">
+			<div class="caption font-green-haze">
+				<i class="icon-settings font-green-haze"></i> <span
+					class="caption-subject bold uppercase">个人信息</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<form class="form-horizontal" role="form">
+				<#list student as s>
+				<div class="form-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">姓名:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.name}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">性别:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.sex}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+					</div>
+					<!--/row-->
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">民族:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.ethnic}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">学院:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.college}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+					</div>
+					<!--/row-->
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">专业:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.major}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">班级:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.classes}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">学号:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.snumber}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">生源地:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">${s.address}</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-5">民族:</label>
+								<div class="col-md-7">
+									<p class="form-control-static">汉族</p>
+								</div>
+							</div>
+						</div>
+						<!--/span-->
+
+						<!--/span-->
+					</div>
+
+				</div>
+				</#list>
+			</form>
+		</div>
+	</div>
+	<!-- END SAMPLE FORM PORTLET-->
+</div>
+<!-- <div class="col-md-7">
+	<div class="portlet light">
+		<div class="portlet-title">
+			<div class="caption font-green-haze">
+				<i class="icon-settings font-green-haze"></i> <span
+					class="caption-subject bold uppercase">详细记录</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="tab-pane" id="tab_1_3">
+				<#list student as s>
+				<div class="portlet-body">
+					<#list s.credits as c>
+					<div class="note note-warning" id="credit">
+						<p>${c.text}</p>
+						<h4 align="right" class="block">${c.fs}</h4>
+					</div>
+					</#list>
+				</div>
+				</#list>
+			</div>
+		</div>
+	</div>
+</div> -->
+<div class="col-md-7">
+	<div class="portlet light portlet-fit ">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class="icon-microphone font-green"></i> <span
+					class="caption-subject bold font-green uppercase">详细记录</span>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<div class="timeline">
+				<#list student as s> <#list s.credits as c>
+				<!-- TIMELINE ITEM -->
+				<div class="timeline-item">
+					<div class="timeline-badge">
+						<div class="timeline-icon">
+						<#if (c.fs>0) >
+							<i class="icon-like font-green-haze"></i>
+						<#else> 
+							<i class="icon-dislike font-green-haze"></i>
+						</#if>
+						</div>
+					</div>
+					<div class="timeline-body">
+						<div class="timeline-body-arrow"></div>
+						<div class="timeline-body-head">
+							<div class="timeline-body-head-caption">
+								<#if (c.fs>0) > 
+								<span class="timeline-body-alerttitle font-red-intense">奖励记录
+									${c.fs}</span> 
+								<#else> <span
+									class="timeline-body-alerttitle font-blue">处罚记录 ${c.fs}</span>
+								</#if> <span class="timeline-body-time font-grey-cascade">${c.lrsj}</span>
+							</div>
+							<div class="timeline-body-head-actions">
+								<div class="btn-group" id="${c.id}ss">
+									<#if (c.sszt='申诉中') >
+										<a href="javascript:;" class="btn btn-circle blue">申诉中 <i
+										class="fa icon-bell"></i>
+										</a>
+									<#elseif (c.sszt='通过') >
+										<a href="javascript:;" class="btn btn-circle green">申诉成功 <i
+										class="fa icon-bell"></i>
+										</a>
+									<#elseif (c.sszt='未通过') >
+										<a href="javascript:;" class="btn btn-circle red">申诉失败 <i
+										class="fa icon-bell"></i>
+										</a>
+									<#else>
+										<a href="javascript:;" class="btn btn-circle red" onclick="ss('${c.id}');">申诉 <i
+										class="fa fa-edit"></i>
+										</a>
+									</#if>
+								</div>
+							</div>
+						</div>
+						<div class="timeline-body-content">
+							<span class="font-grey-cascade"> ${c.text} </span>
+						</div>
+					</div>
+				</div>
+				<!-- END TIMELINE ITEM -->
+				</#list> </#list>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="modal fade" id="ss" tabindex="-1" role="basic"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">申诉</h4>
+				</div>
+				<div class="modal-body">
+					<div class="portlet-body form">
+						<!-- BEGIN FORM-->
+						<form action="#" class="form-horizontal">
+							<div class="form-body">
+								<input id="ssid" type="text" hidden="true"/>
+								<div class="form-group form-group-sm">
+									<label>请填写申诉理由：</label>
+									<textarea class="form-control" rows="3" id="ssly"></textarea>
+								</div>
+							</div>
+						</form>
+						<!-- END FORM-->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn blue" onclick="addSS();">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- END CONTENT BODY -->
+<!-- END ALERTS PORTLET-->
+<@m.footer/> 
+	<script type="text/javascript">
+		function ss(id){
+			$("#ssid").val(id);
+			$('#ss').modal('show');
+		}
+		function addSS(){
+			openBlock();
+			var ssid = $("#ssid").val();
+			var ssly = $("#ssly").val();
+			if(ssly==""){
+				bootbox.alert("请填写申诉理由!");
+			}else{
+				$('#ss').modal('hide');
+				$.post("stuinfo/ss.do", {
+					"ssid" : ssid,
+					"ssly":ssly
+				}, function(data) {
+					if (data == "ok") {
+						$("#"+ssid+"ss").html('<a href="javascript:;" class="btn btn-circle blue">申诉中 <i class="fa icon-bell"></i></a>');
+						toastr.success("成功","申诉已提交,请耐心等待处理!");
+					} else {
+						bootbox.alert(data);
+					}
+				}, "text");
+			}
+			closeBlock();
+		}
+	</script>
+<@m.end/>

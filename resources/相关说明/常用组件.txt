@@ -1,0 +1,19 @@
+1、toast的使用
+	toastr.success("内容","标题");
+	toastr.info("内容!","标题");
+	toastr.warning("内容!","标题");
+	toastr.error("内容!","标题");
+2、数据加载进度圈
+	打开
+	 openBlock()
+          关闭
+	closeBlock();
+3、alert和comfirm
+	基本alert
+	bootbox.alert("内容");
+	带回调的alert
+	bootbox.alert("内容", function() {//回调});
+          基本confirm
+	bootbox.confirm("内容", function(result) {//回调}); 
+        
+	

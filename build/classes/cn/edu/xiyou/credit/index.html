@@ -1,0 +1,479 @@
+<@m.header/> <@m.body />
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet box blue">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="fa fa-gift"></i>学生诚信信息
+				</div>
+				<div class="actions">
+					<a data-toggle="modal" onclick="del();"
+						class="btn btn-circle  btn-default btn-sm"> <i
+						class="fa fa-remove"></i>删除
+					</a><a data-toggle="modal" onclick="cxda();"
+						class="btn btn-circle  btn-default btn-sm"> <i
+						class="fa fa-print"></i>诚信档案
+					</a><a href="javascript:;"
+						class="btn btn-circle btn-default btn-sm btn-icon-only fullscreen"
+						data-original-title="" title="全屏"></a>
+				</div>
+			</div>
+			<div class="portlet-body">
+				<div>
+					<div class="row">
+						<div class="col-md-6">
+							<div
+								class="form-group form-group-sm form-md-line-input  form-md-floating-label">
+								<div class="input-icon">
+									<input type="text" class="form-control" id="form_control_1">
+									<label for="form_control_1">请输入搜索内容...</label> <span
+										class="help-block">您可以连续输入多个关键字,关键字之间用空格分开</span> <i
+										class="fa fa-search"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<table class="table table-striped table-hover" id="sample_1">
+					<thead>
+						<tr>
+							<th>学院</th>
+							<th>专业</th>
+							<th>班级</th>
+							<th>学号</th>
+							<th>姓名</th>
+							<th>录入人员</th>
+							<th>录入时间</th>
+							<th>审核人员</th>
+							<th>审核时间</th>
+							<th>审核状态</th>
+							<th>申诉状态</th>
+							<th>详细</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="add" tabindex="-1" role="basic"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">添加学生诚信记录</h4>
+				</div>
+				<div class="modal-body">
+					<div class="portlet-body form">
+						<!-- BEGIN FORM-->
+						<form action="#" class="form-horizontal">
+							<div class="form-body">
+								<div
+									class="form-group form-md-line-input has-info form-md-floating-label">
+									<div class="input-group input-group-lg">
+										<div class="input-group-control">
+											<input type="text" class="form-control input-lg" id="wxh"> <label
+												for="form_control_1">请输入学生学号.</label>
+										</div>
+										<span class="input-group-btn btn-right">
+											<button class="btn green-haze" type="button" onclick="cxxs();">查询</button>
+										</span>
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">学院：</label>
+									<div class="col-md-4">
+										<p class="form-control-static" id="xy"></p>
+									</div>
+									<label class="col-md-2 control-label">专业：</label>
+									<div class="col-md-4">
+										<p class="form-control-static" id="zy"></p>
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">班级：</label>
+									<div class="col-md-4">
+										<p class="form-control-static" id="bj"></p>
+									</div>
+									<label class="col-md-2 control-label">学号：</label>
+									<div class="col-md-4">
+										<p class="form-control-static" id="xh"></p>
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">姓名：</label>
+									<div class="col-md-4">
+										<p class="form-control-static" id="xm"></p>
+									</div>
+									<label class="col-md-2 control-label">性别：</label>
+									<div class="col-md-4">
+										<p class="form-control-static" id="xb"></p>
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label>诚信记录内容：</label>
+									<textarea class="form-control" rows="3" id="jlnr"></textarea>
+								</div>
+							</div>
+						</form>
+						<!-- END FORM-->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn blue" onclick="addCXJL();">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="editstudent" tabindex="-1" role="basic"
+		aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true"></button>
+					<h4 class="modal-title">修改学生信息</h4>
+				</div>
+				<div class="modal-body ">
+					<div class="portlet-body form">
+						<!-- BEGIN FORM-->
+						<form action="#" class="form-horizontal">
+							<div class="form-body">
+								<div class="form-group form-group-sm ">
+									<label class="col-md-2 control-label">学校</label>
+									<div class="col-md-4">
+										<input id="euniversity" type="text"
+											class="form-control input-circle" placeholder="请输入学校."
+											disabled="disabled">
+									</div>
+									<label class="col-md-2 control-label">学院</label>
+									<div class="col-md-4">
+										<input id="ecollege" type="text"
+											class="form-control input-circle" placeholder="请输入学院.">
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">专业</label>
+									<div class="col-md-4">
+										<input id="emajor" type="text"
+											class="form-control input-circle" placeholder="请输入专业.">
+									</div>
+									<label class="col-md-2 control-label">年级</label>
+									<div class="col-md-4">
+										<input id="eyear" type="text"
+											class="form-control input-circle" placeholder="请输入专业.">
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">名字</label>
+									<div class="col-md-4">
+										<input id="ename" type="text"
+											class="form-control input-circle" placeholder="请输入名字.">
+									</div>
+									<label class="col-md-2 control-label">性别</label>
+									<div class="col-md-4">
+										<input id="esex" type="text" class="form-control input-circle"
+											placeholder="请输入性别">
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">班级</label>
+									<div class="col-md-4">
+										<input id="eclasses" type="text"
+											class="form-control input-circle" placeholder="请输入班级.">
+									</div>
+									<label class="col-md-2 control-label">学号</label>
+									<div class="col-md-4">
+										<input id="esnumber" type="text"
+											class="form-control input-circle" placeholder="请输入学号.">
+									</div>
+								</div>
+								<div class="form-group form-group-sm">
+									<label class="col-md-2 control-label">生源地</label>
+									<div class="col-md-4">
+										<input id="eaddress" type="text"
+											class="form-control input-circle" placeholder="请输入生源地.">
+									</div>
+									<label class="col-md-2 control-label">民族</label>
+									<div class="col-md-4">
+										<input id="eethnic" type="text"
+											class="form-control input-circle" placeholder="请输入民族.">
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- END FORM-->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn blue" onclick="editstudent();">保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<@m.footer/>
+<script type="text/javascript">
+	var id = "";
+	var table = $('#sample_1');
+	var oTable;
+	function initTable1() {
+		$
+				.extend(
+						true,
+						$.fn.DataTable.TableTools.classes,
+						{
+							"container" : "btn-group tabletools-dropdown-on-portlet",
+							"buttons" : {
+								"normal" : "btn btn-circle default",
+								"disabled" : "btn btn-circle default disabled"
+							},
+							"collection" : {
+								"container" : "DTTT_dropdown dropdown-menu tabletools-dropdown-menu"
+							}
+						});
+		oTable = table
+				.DataTable({
+					"language" : {
+						"aria" : {
+							"sortAscending" : ": 升序排序",
+							"sortDescending" : ": 降序排序"
+						},
+						"emptyTable" : "无数据",
+						"info" : "显示 _START_ 到 _END_ 共 _TOTAL_ 条数据",
+						"infoEmpty" : "没有数据",
+						"infoFiltered" : "(共 _MAX_ 条 )",
+						"lengthMenu" : "显示 _MENU_条数据",
+						"search" : "搜索:",
+						"zeroRecords" : "未找到匹配的数据"
+					},
+					"order" : [ [ 0, 'asc' ] ],
+					"lengthMenu" : [ [ 5, 10, 15, 20, -1 ],
+							[ 5, 10, 15, 20, "全部" ] // change per page values here
+					],
+					"pageLength" : 10,
+					"dom" : "<'row' <'col-md-12'>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'T>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>", // horizobtal scrollable datatable
+					"ajax" : "<@m.path/>/credit/load.do",
+					"columns" : [ {
+						"data" : "college"
+					}, {
+						"data" : "major"
+					}, {
+						"data" : "classes"
+					}, {
+						"data" : "snumber"
+					}, {
+						"data" : "sname"
+					}, {
+						"data" : "lrryName"
+					}, {
+						"data" : "lrsj"
+					}, {
+						"data" : "shryName"
+					}, {
+						"data" : "shsj"
+					}, {
+						"data" : "status"
+					}, {
+						"data" : "sszt"
+					}, {
+						"data" : "shryUsername"
+					} ],
+					deferRender : true,
+					"tableTools" : {
+						"sRowSelect" : "single",
+						"sSwfPath" : "<@m.path/>/assets/global/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
+						"aButtons" : [
+								{
+									"sExtends" : "xls",
+									"sToolTip" : "表格数据导出Excel",
+									"sButtonText" : "<i class='fa fa-file-excel-o'></i> 导出",
+									"oSelectorOpts" : {
+										page : 'current'
+									}
+
+								},
+								{
+									"sExtends" : "print",
+									"sButtonText" : "<i class='fa fa-print'></i> 打印",
+									"sToolTip" : "打印表格数据",
+									"sInfo" : '"CTRL+P"打印,"ESC"退出',
+									"sMessage" : "该数据由开发平台提供",
+									"bShowAll" : false
+								} ]
+					}
+				});
+	}
+
+	$(function() {
+		initTable1();
+		$('#sample_1 tbody').on('click', 'tr', function() {
+			var data = $('#sample_1').DataTable().row(this).data();
+			id = data.id;
+		});
+		$('#form_control_1').on(
+				'keyup click',
+				function() {
+					$('#sample_1').DataTable().search(
+							$('#form_control_1').val(), true, true).draw();
+				});
+	});
+	function cxxs(){
+		var xh = $("#wxh").val();
+		if(xh==null||xh==""){
+			toastr.warning("请先输入学生学号!", "警告");
+		}else{
+			$.post("getXS.do", {
+				"xh" : xh
+			}, function(data) {
+				if (data == "error") {
+					$("#xy").html("");
+					$("#zy").html("");
+					$("#bj").html("");
+					$("#xh").html("");
+					$("#xm").html("");
+					$("#xb").html("");
+					toastr.error("未找到该学生信息,请检查学号是否正确.", "提示");
+				} else {
+					$("#xy").html(data.college);
+					$("#zy").html(data.major);
+					$("#bj").html(data.classes);
+					$("#xh").html(data.snumber);
+					$("#xm").html(data.name);
+					$("#xb").html(data.sex);
+				}
+			}, "json");
+		}
+	}
+	function jl(t,b) {
+		bootbox.alert("诚信记录："+t+"<br>备注："+b);
+	}
+	function addCXJL() {
+		var xh = $("#xh").html();
+		var text = $("#jlnr").val();
+		if(xh!=null&& xh!="" && text!=null&& text!=""){
+			$('#add').modal('hide');
+			openBlock();
+			$.post("addCXJL.do", {
+				"xh" : xh,
+				"text" : text
+			}, function(data) {
+				closeBlock();
+				if (data == "ok") {
+					toastr.success("操作成功!", "成功");
+					oTable.ajax.reload();
+				} else {
+					toastr.error("操作失败!", "错误");
+					bootbox.alert("操作失败！信息：" + data);
+				}
+			}, "text");
+		}else{
+			toastr.error("请输入学号及诚信记录内容.", "提示");
+		}
+	}
+	function del() {
+		if (id == "") {
+			toastr.error("请选择要删除的记录!", "错误");
+			return;
+		} else {
+			bootbox.confirm("您确定要删除该诚信记录吗?", function(result) {
+				if (result == true) {
+					$.post("del.do", {
+						"id" : id
+					}, function(data) {
+						if (data == "ok") {
+							toastr.success("操作成功!", "成功");
+							oTable.ajax.reload();
+							id = "";
+						} else {
+							toastr.error(data, "错误");
+						}
+					}, "text");
+				}
+			});
+		}
+	}
+
+	function upd() {
+		if (id == "") {
+			toastr.error("请选择要修改的学生信息!", "错误");
+			return;
+		} else {
+			openBlock();
+			$.post("getStudent.do", {
+				"id" : id
+			}, function(data) {
+				if (data != "error") {
+					closeBlock();
+					$("#euniversity").val(data.university);
+					$("#ecollege").val(data.college);
+					$("#emajor").val(data.major);
+					$("#eyear").val(data.year);
+					$("#eclasses").val(data.classes);
+					$("#esnumber").val(data.snumber);
+					$("#ename").val(data.name);
+					$("#esex").val(data.sex);
+					$("#eaddress").val(data.address);
+					$("#eethnic").val(data.ethnic);
+					$('#editstudent').modal('show');
+				} else {
+					bootbox.alert("操作失败,请稍后再试!");
+				}
+			}, "json");
+		}
+	}
+
+	function editstudent() {
+		$('#editstudent').modal('hide');
+		openBlock();
+		var university = $("#euniversity").val();
+		var college = $("#ecollege").val();
+		var major = $("#emajor").val();
+		var year = $("#eyear").val()
+		var classes = $("#eclasses").val();
+		var snumber = $("#esnumber").val();
+		var name = $("#ename").val();
+		var sex = $("#esex").val();
+		var address = $("#eaddress").val();
+		var ethnic = $("#eethnic").val();
+		$.post("editstudent.do", {
+			"id" : studentid,
+			"university" : university,
+			"college" : college,
+			"major" : major,
+			"year" : year,
+			"classes" : classes,
+			"snumber" : snumber,
+			"name" : name,
+			"sex" : sex,
+			"address" : address,
+			"ethnic" : ethnic
+		}, function(data) {
+			closeBlock();
+			if (data == "ok") {
+				toastr.success("操作成功!", "成功");
+				oTable.ajax.reload();
+				studentid = "";
+			} else {
+				toastr.error("操作失败!", "错误");
+				bootbox.alert("操作失败！信息：" + data);
+			}
+		}, "text");
+	}
+	function cxda(){
+		if (id == "") {
+			toastr.error("请先选择学生诚信信息!", "错误");
+			return;
+		} else {
+			window.location.href="cxda.doc?id="+id; 
+		}
+	}
+	
+</script>
+<@m.end/>
